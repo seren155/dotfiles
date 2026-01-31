@@ -10,6 +10,7 @@ Mi configuración personal de archivos dots y los programas que acostumbro a uti
 **Editor:** Nvim\
 **File Manager:** Dolphin\
 **Password Manager:** KeepassXC\
+**Wallpaper:** Waypaper + swaybg\
 
 ## Reproduccion Multimedia
 **Video:** mpv\
