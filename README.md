@@ -11,12 +11,12 @@ Mi configuración personal de archivos dots y los programas que acostumbro a uti
 **Editor:** Nvim\
 **File Manager:** nemo\
 **Password Manager:** KeepassXC\
-**Wallpaper:** Waypaper + swaybg\
+**Wallpaper:** Waypaper + swaybg
 
 ## Reproduccion Multimedia
 **Video:** mpv\
-**Musica:** Clementine\
+**Musica:** Clementine
 
-### Theme
+## Theme
 #### Rose Pine Moon
-* Usé nwg-look para aplicar el tema a las aplicaciones GTK
+* nwg-look para aplicar el tema a las aplicaciones GTK
