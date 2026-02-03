@@ -9,10 +9,14 @@ Mi configuración personal de archivos dots y los programas que acostumbro a uti
 **Shell:** Fish\
 **Terminal:** Kitty\
 **Editor:** Nvim\
-**File Manager:** Dolphin\
+**File Manager:** nemo\
 **Password Manager:** KeepassXC\
 **Wallpaper:** Waypaper + swaybg\
 
 ## Reproduccion Multimedia
 **Video:** mpv\
 **Musica:** Clementine\
+
+### Theme
+#### Rose Pine Moon
+* Usé nwg-look para aplicar el tema a las aplicaciones GTK
