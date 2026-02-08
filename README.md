@@ -9,7 +9,7 @@ Mi configuración personal de archivos dots y los programas que acostumbro a uti
 **Shell:** Fish\
 **Terminal:** Kitty\
 **Editor:** Nvim\
-**File Manager:** nemo\
+**File Manager:** yazi (+ dolphin)\
 **Password Manager:** KeepassXC\
 **Wallpaper:** Waypaper + swaybg
 

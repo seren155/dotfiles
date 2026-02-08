@@ -1,0 +1,10 @@
+[opener]
+play = [
+    { run = 'mpv "$@"', block = true, desc = "Play with mpv" },
+]
+
+[open]
+rules = [
+    { mime = "video/*", use = "play" },
+    { mime = "audio/*", use = "play" },
+]
