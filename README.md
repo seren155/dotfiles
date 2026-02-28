@@ -5,7 +5,7 @@ Mi configuración personal de archivos dots y los programas que acostumbro a uti
 ## Software Principal
 **WM:** Hyprland\
 **App Launcher:** wofi\
-**Status Bar:** Waybar\
+**Status Bar:** Waybar (mechabar by @sejjy)\
 **Shell:** Fish\
 **Terminal:** Kitty\
 **Editor:** Nvim\

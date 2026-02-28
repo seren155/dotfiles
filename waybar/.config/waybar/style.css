@@ -1,79 +1,44 @@
-@import "themes/mocha.css";
+@import "theme.css";
 
 * {
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
-    border: none;
-    border-radius: 0;
+	/* ignore GTK theme */
+	all: initial;
+	color: @main-fg;
 }
 
-/* 1. Bar Background Removed */
-window#waybar {
-    background-color: transparent; /* No more bar background */
-    color: @text;
+@import "styles/fonts.css";
+@import "styles/modules-center.css";
+@import "styles/modules-left.css";
+@import "styles/modules-right.css";
+@import "styles/states.css";
+
+.module {
+	margin-bottom: -1px;
 }
 
-/* 2. Standard Islands (Left & Center) */
-#workspaces, #window {
-    background-color: @base; 
-    color: @text;
-    padding: 0 12px;
-    margin: 4px 3px;
-    border-radius: 12px;
+#waybar {
+	background-color: @outline;
+}
+#waybar > box {
+	margin: 4px;
+	background-color: @main-bg;
 }
 
-/* 3. Unified Right Modules (The Pill) */
-/* This targets all modules inside the right-side container */
-.modules-right > widget > label, 
-.modules-right > widget > box {
-    background-color: @base;
-    padding: 0 10px;
-    margin: 4px 0; /* Margin 0 on sides to keep them touching */
+button {
+	border-radius: 16px;
+	min-width: 16px;
+	padding: 0 10px;
+}
+button:hover {
+	background-color: @hover-bg;
+	color: @hover-fg;
 }
 
-/* Round the very left edge of the right-side group */
-.modules-right > widget:first-child > label,
-.modules-right > widget:first-child > box {
-    border-top-left-radius: 12px;
-    border-bottom-left-radius: 12px;
-    margin-left: 3px;
+tooltip {
+	border: 2px solid @main-br;
+	border-radius: 10px;
+	background-color: @main-bg;
 }
-
-/* Round the very right edge of the right-side group */
-.modules-right > widget:last-child > label,
-.modules-right > widget:last-child > box {
-    border-top-right-radius: 12px;
-    border-bottom-right-radius: 12px;
-    margin-right: 3px;
-}
-
-/* 4. Text Colors & Workspace Dot Fix */
-#cpu { color: @sapphire; }
-#memory { color: @green; }
-#pulseaudio { color: @yellow; }
-#network { color: @teal; }
-#clock { color: @lavender; }
-#battery { color: @peach; }
-
-#workspaces button {
-    background-color: transparent;
-    color: @overlay0;
-    border-radius: 50%;
-    min-width: 20px;
-    min-height: 20px;
-    transition: none;
-}
-
-#workspaces button:hover { background: transparent; }
-
-#workspaces button.active, #workspaces button.focused {
-    background-color: @mauve;
-    background-clip: content-box;
-    padding: 5px; /* Small centered dot */
-}
-
-#battery.critical:not(.charging) {
-    background-color: @red;
-    color: @base;
-    animation: none;
+tooltip > box {
+	padding: 0 6px;
 }
