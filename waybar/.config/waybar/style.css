@@ -1,44 +1,98 @@
-@import "theme.css";
+/* Gruvbox color palette — warm, muted tones, photosensitive-friendly */
+/* No harsh whites, no high-contrast flashes, low saturation accents */
 
 * {
-	/* ignore GTK theme */
-	all: initial;
-	color: @main-fg;
+    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
 }
 
-@import "styles/fonts.css";
-@import "styles/modules-center.css";
-@import "styles/modules-left.css";
-@import "styles/modules-right.css";
-@import "styles/states.css";
-
-.module {
-	margin-bottom: -1px;
+window#waybar {
+    /* gruvbox dark0_hard background — deep warm brown-black, easy on eyes */
+    background-color: #1d2021;
+    /* gruvbox gray1 — muted warm gray, not stark white */
+    color: #928374;
 }
 
-#waybar {
-	background-color: @outline;
-}
-#waybar > box {
-	margin: 4px;
-	background-color: @main-bg;
+#clock, #cpu, #memory, #idle_inhibitor, #power-profiles-daemon, #disk, #network, #pulseaudio, #tray, #language {
+    margin: 4px;
 }
 
-button {
-	border-radius: 16px;
-	min-width: 16px;
-	padding: 0 10px;
-}
-button:hover {
-	background-color: @hover-bg;
-	color: @hover-fg;
+#clock {
+    /* gruvbox neutral_aqua — soft teal, calm and readable */
+    color: #689d6a;
 }
 
-tooltip {
-	border: 2px solid @main-br;
-	border-radius: 10px;
-	background-color: @main-bg;
+#cpu {
+    /* gruvbox neutral_blue — muted steel blue, not electric */
+    color: #458588;
 }
-tooltip > box {
-	padding: 0 6px;
+
+#memory {
+    /* gruvbox neutral_purple — dusty mauve, gentle on eyes */
+    color: #b16286;
+}
+
+#pulseaudio {
+    /* gruvbox neutral_yellow — warm amber, not fluorescent */
+    color: #d79921;
+}
+
+#disk {
+    /* gruvbox neutral_orange — earthy burnt orange */
+    color: #d65d0e;
+    padding-right: 4px;
+}
+
+#network {
+    /* gruvbox bright_aqua — slightly warmer teal for network */
+    color: #8ec07c;
+}
+
+#power-profiles-daemon {
+    /* gruvbox neutral_red — muted brick red, not alarming */
+    color: #cc241d;
+}
+
+#language {
+    /* gruvbox gray2 — warm light gray, subtle */
+    color: #a89984;
+}
+
+#idle_inhibitor {
+    /* gruvbox gray1 — same muted gray as base comment color */
+    color: #928374;
+}
+
+#tray {
+    /* gruvbox gray2 — slightly lighter warm gray for tray icons */
+    color: #a89984;
+}
+
+#window {
+    margin-left: 4px;
+}
+
+#workspaces, #window {
+    /* gruvbox gray1 — consistent muted warm gray */
+    color: #928374;
+}
+
+#workspaces button {
+    color: #928374;
+    background-color: transparent;
+    padding: 0 4px;
+}
+
+#workspaces button:hover {
+    /* gruvbox dark2 — subtle warm hover, no bright flash */
+    background-color: #504945;
+    color: #a89984;
+}
+
+#workspaces button.active {
+    /* gruvbox dark3 — slightly elevated active state */
+    background-color: #665c54;
+    color: #d5c4a1;
 }
