@@ -1,98 +1,168 @@
-/* Gruvbox color palette — warm, muted tones, photosensitive-friendly */
-/* No harsh whites, no high-contrast flashes, low saturation accents */
+/* ============================================================
+   waybar — gruvbox, photosensitive-friendly
+   Consistent with:
+     hyprland: active_border #504945→#d79921, bg #1d2021, inactive #3c3836
+     kitty:    bg #1d2021, fg #d5c4a1, font Iosevka
+     opacity:  mirrors hyprland inactive_opacity 0.95
+   ============================================================ */
 
+/* ── Variables ─────────────────────────────────────────────── */
 * {
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    /* Iosevka first — matches kitty, falls back gracefully */
+    font-family: Iosevka, FontAwesome, monospace;
     font-size: 13px;
     border: none;
     border-radius: 0;
+
+    /* Smooth transitions everywhere — no harsh instant color snaps */
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+/* ── Bar surface ────────────────────────────────────────────── */
 window#waybar {
-    /* gruvbox dark0_hard background — deep warm brown-black, easy on eyes */
-    background-color: #1d2021;
-    /* gruvbox gray1 — muted warm gray, not stark white */
+    /* dark1 (#3c3836) rather than dark0_hard — lifts the bar one layer
+       above the raw compositor background, matching hyprland window surfaces.
+       Slight transparency echoes hyprland inactive_opacity: 0.95           */
+    background-color: rgba(60, 56, 54, 0.95);
     color: #928374;
 }
 
-#clock, #cpu, #memory, #idle_inhibitor, #power-profiles-daemon, #disk, #network, #pulseaudio, #tray, #language {
-    margin: 4px;
+/* ── Module shared spacing ──────────────────────────────────── */
+/* gaps_in = 2 in hyprland — keep module spacing tight and consistent */
+#clock,
+#cpu,
+#memory,
+#idle_inhibitor,
+#power-profiles-daemon,
+#disk,
+#network,
+#pulseaudio,
+#tray,
+#language {
+    margin: 2px 4px;
+    padding: 0 6px;
 }
 
+/* ── Workspaces ─────────────────────────────────────────────── */
+#workspaces {
+    margin: 2px 4px;
+}
+
+#workspaces button {
+    color: #665c54;               /* dark3 — dim, inactive */
+    background-color: transparent;
+    padding: 0 6px;
+    border-bottom: 2px solid transparent;
+}
+
+#workspaces button:hover {
+    /* dark2 surface lift — mirrors the dimmer end of hyprland active_border */
+    background-color: rgba(80, 73, 69, 0.6);
+    color: #a89984;
+    border-bottom: 2px solid #504945;
+}
+
+#workspaces button.active {
+    /* Amber accent — directly mirrors hyprland col.active_border bright end */
+    color: #d79921;
+    background-color: rgba(80, 73, 69, 0.4);
+    /* Underline instead of filled box — lighter visual weight, less strobing */
+    border-bottom: 2px solid #d79921;
+}
+
+#workspaces button.urgent {
+    /* Muted brick red — matches hyprland shadow color family, not alarming */
+    color: #cc241d;
+    border-bottom: 2px solid #cc241d;
+}
+
+/* ── Window title ───────────────────────────────────────────── */
+#window {
+    margin-left: 4px;
+    color: #928374;
+    font-style: italic;
+}
+
+/* ── Clock ──────────────────────────────────────────────────── */
 #clock {
-    /* gruvbox neutral_aqua — soft teal, calm and readable */
+    /* neutral_aqua — calm, readable, same as kitty color6 */
     color: #689d6a;
 }
 
+/* ── System stats ───────────────────────────────────────────── */
 #cpu {
-    /* gruvbox neutral_blue — muted steel blue, not electric */
+    /* neutral_blue — steel, same as kitty color4 */
     color: #458588;
 }
 
 #memory {
-    /* gruvbox neutral_purple — dusty mauve, gentle on eyes */
+    /* neutral_purple — dusty mauve, same as kitty color5 */
     color: #b16286;
 }
 
-#pulseaudio {
-    /* gruvbox neutral_yellow — warm amber, not fluorescent */
-    color: #d79921;
-}
-
 #disk {
-    /* gruvbox neutral_orange — earthy burnt orange */
+    /* neutral_orange — earthy, same as kitty color1 family */
     color: #d65d0e;
-    padding-right: 4px;
 }
 
+/* ── Network ────────────────────────────────────────────────── */
 #network {
-    /* gruvbox bright_aqua — slightly warmer teal for network */
+    /* bright_aqua — soft green, same as kitty color2 family */
     color: #8ec07c;
 }
 
-#power-profiles-daemon {
-    /* gruvbox neutral_red — muted brick red, not alarming */
+#network.disconnected {
+    /* brick red on disconnect — muted, not alarming */
     color: #cc241d;
 }
 
-#language {
-    /* gruvbox gray2 — warm light gray, subtle */
+/* ── Audio ──────────────────────────────────────────────────── */
+#pulseaudio {
+    /* neutral_yellow/amber — matches hyprland active_border bright end exactly */
+    color: #d79921;
+}
+
+#pulseaudio.muted {
+    /* gray on mute — visually quieter */
+    color: #665c54;
+}
+
+/* ── Power profile ──────────────────────────────────────────── */
+#power-profiles-daemon {
     color: #a89984;
 }
 
+#power-profiles-daemon.performance {
+    color: #d79921;
+}
+
+#power-profiles-daemon.power-saver {
+    color: #8ec07c;
+}
+
+/* ── Idle inhibitor ─────────────────────────────────────────── */
 #idle_inhibitor {
-    /* gruvbox gray1 — same muted gray as base comment color */
-    color: #928374;
+    color: #665c54;
 }
 
+#idle_inhibitor.activated {
+    /* amber when active — consistent accent with active border/workspaces */
+    color: #d79921;
+}
+
+/* ── Tray + Language ────────────────────────────────────────── */
 #tray {
-    /* gruvbox gray2 — slightly lighter warm gray for tray icons */
-    color: #a89984;
-}
-
-#window {
-    margin-left: 4px;
-}
-
-#workspaces, #window {
-    /* gruvbox gray1 — consistent muted warm gray */
     color: #928374;
 }
 
-#workspaces button {
-    color: #928374;
-    background-color: transparent;
-    padding: 0 4px;
+#tray > .passive {
+    color: #665c54;
 }
 
-#workspaces button:hover {
-    /* gruvbox dark2 — subtle warm hover, no bright flash */
-    background-color: #504945;
+#tray > .active {
     color: #a89984;
 }
 
-#workspaces button.active {
-    /* gruvbox dark3 — slightly elevated active state */
-    background-color: #665c54;
-    color: #d5c4a1;
+#language {
+    color: #928374;
 }

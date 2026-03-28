@@ -1,0 +1,185 @@
+# ============================================================
+# yazi — theme.toml — gruvbox dark, photosensitive-friendly
+# Consistent with:
+#   hyprland: active_border #504945→#d79921, bg #1d2021
+#   kitty:    bg #1d2021, fg #d5c4a1, accents from neutral tier
+#   waybar:   amber active (#d79921), surface (#3c3836)
+# ============================================================
+
+"$schema" = "https://yazi-rs.github.io/schemas/theme.json"
+
+# ── App ──────────────────────────────────────────────────────
+[app]
+# dark0_hard — matches kitty + hyprland compositor background
+overall = { bg = "#1d2021" }
+
+# ── Manager ──────────────────────────────────────────────────
+[mgr]
+# CWD bar — amber, matches hyprland active_border bright end + waybar active workspace
+cwd = { fg = "#d79921", bold = true }
+
+# Search highlight — steel blue, same as kitty color4 / waybar #cpu
+find_keyword  = { fg = "#458588", bold = true, underline = true }
+find_position = { fg = "#689d6a", italic = true }
+
+# Symlink target — muted aqua, readable but secondary
+symlink_target = { fg = "#8ec07c", italic = true }
+
+# File operation markers — warm, distinct, not alarming
+marker_copied   = { fg = "#1d2021", bg = "#98971a" }  # neutral_green
+marker_cut      = { fg = "#1d2021", bg = "#d65d0e" }  # neutral_orange — matches waybar #disk
+marker_marked   = { fg = "#1d2021", bg = "#504945" }  # dark3 — dim pre-select
+marker_selected = { fg = "#1d2021", bg = "#d79921" }  # amber — matches active accent system-wide
+
+# Count badges next to markers
+count_copied   = { fg = "#98971a", bold = true }
+count_cut      = { fg = "#d65d0e", bold = true }
+count_selected = { fg = "#d79921", bold = true }
+
+# Border — thin warm separator, matches hyprland inactive_border
+border_symbol = "│"
+border_style  = { fg = "#3c3836" }
+
+# ── Indicator bars (pane activity strips) ────────────────────
+[indicator]
+# Parent pane — dim, inactive feel — matches hyprland inactive_border
+parent  = { fg = "#504945", bg = "#1d2021" }
+# Current pane — amber, primary focus — matches active_border + waybar active
+current = { fg = "#d79921", bg = "#1d2021" }
+# Preview pane — muted teal, calm secondary
+preview = { fg = "#689d6a", bg = "#1d2021" }
+
+padding = { open = "▐", close = "▌" }
+
+# ── Tabs ─────────────────────────────────────────────────────
+[tabs]
+# Active tab — amber fg on dark1 surface — mirrors waybar active_tab
+active   = { fg = "#d79921", bg = "#3c3836", bold = true }
+# Inactive — warm gray on dark0_hard — mirrors waybar inactive_tab
+inactive = { fg = "#665c54", bg = "#1d2021" }
+
+sep_inner = { open = " ", close = " " }
+sep_outer = { open = "", close = "" }
+
+# ── Mode indicators ──────────────────────────────────────────
+[mode]
+# Normal — amber on dark1, matches active workspace in waybar
+normal_main = { fg = "#1d2021", bg = "#d79921", bold = true }
+normal_alt  = { fg = "#d79921", bg = "#3c3836" }
+
+# Select — steel blue, same as kitty color4 / waybar #cpu
+select_main = { fg = "#1d2021", bg = "#458588", bold = true }
+select_alt  = { fg = "#458588", bg = "#3c3836" }
+
+# Unset — muted, low priority
+unset_main = { fg = "#1d2021", bg = "#665c54", bold = true }
+unset_alt  = { fg = "#928374", bg = "#3c3836" }
+
+# ── Status bar ───────────────────────────────────────────────
+[status]
+# Overall bar surface — dark1, matches waybar background
+overall = { fg = "#a89984", bg = "#3c3836" }
+
+# Powerline-style separators — consistent with waybar powerline tab_bar
+sep_left  = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+
+# Permissions — color-coded, all from same gruvbox palette
+perm_type  = { fg = "#458588" }   # type char (d/-/l) — steel blue
+perm_read  = { fg = "#98971a" }   # r — neutral_green
+perm_write = { fg = "#d65d0e" }   # w — neutral_orange, matches waybar #disk
+perm_exec  = { fg = "#d79921" }   # x — amber, consistent accent
+perm_sep   = { fg = "#504945" }   # separator dashes — dim
+
+# Progress
+progress_label  = { fg = "#d5c4a1", bold = true }
+progress_normal = { fg = "#d79921", bg = "#3c3836" }
+progress_error  = { fg = "#cc241d", bg = "#3c3836" }
+
+# ── Input (rename, search prompt) ────────────────────────────
+[input]
+overall  = { fg = "#d5c4a1", bg = "#282828" }
+
+# Cursor matches kitty cursor color
+cursor   = { fg = "#1d2021", bg = "#d5c4a1" }
+# Selected text — dark3 bg, warm fg
+selected = { fg = "#d5c4a1", bg = "#504945" }
+
+# ── Completion popup ─────────────────────────────────────────
+[completion]
+overall  = { fg = "#a89984", bg = "#282828" }
+# Active item — amber accent, consistent with active states system-wide
+item_hovered = { fg = "#d79921", bg = "#3c3836", bold = true }
+# Icon column subtle separator
+icon_file    = { fg = "#665c54" }
+icon_folder  = { fg = "#d79921" }
+icon_command = { fg = "#458588" }
+
+# ── Notify / popups ──────────────────────────────────────────
+[notify]
+# Title bar per severity — muted, not alarming (photosensitive)
+title_info  = { fg = "#8ec07c", bold = true }   # soft green
+title_warn  = { fg = "#d79921", bold = true }   # amber
+title_error = { fg = "#cc241d", bold = true }   # muted brick red
+
+# Severity icons
+icon_info  = ""
+icon_warn  = ""
+icon_error = ""
+
+# ── File type colors ─────────────────────────────────────────
+[filetype]
+rules = [
+  # Images — teal, matches kitty color6 / waybar #clock
+  { mime = "image/*",       fg = "#689d6a" },
+
+  # Video/Audio — amber family
+  { mime = "video/*",       fg = "#d79921" },
+  { mime = "audio/*",       fg = "#b57614" },
+
+  # Archives — orange, matches waybar #disk
+  { mime = "application/zip",            fg = "#d65d0e" },
+  { mime = "application/x-tar",          fg = "#d65d0e" },
+  { mime = "application/x-bzip*",        fg = "#d65d0e" },
+  { mime = "application/x-7z-compressed",fg = "#d65d0e" },
+  { mime = "application/gzip",           fg = "#d65d0e" },
+  { mime = "application/zstd",           fg = "#d65d0e" },
+
+  # Documents — warm fg2
+  { mime = "application/pdf",            fg = "#d5c4a1" },
+  { mime = "application/msword",         fg = "#d5c4a1" },
+  { mime = "application/vnd.*",          fg = "#a89984" },
+
+  # Code / text — steel blue, matches kitty color4 / waybar #cpu
+  { mime = "text/*",        fg = "#458588" },
+  { mime = "application/json",           fg = "#458588" },
+  { mime = "application/javascript",     fg = "#458588" },
+  { mime = "application/xml",            fg = "#458588" },
+
+  # Executables — dusty mauve, matches kitty color5 / waybar #memory
+  { name = "*.sh",          fg = "#b16286" },
+  { name = "*.bash",        fg = "#b16286" },
+  { name = "*.zsh",         fg = "#b16286" },
+  { name = "*.fish",        fg = "#b16286" },
+
+  # Configs/dotfiles — soft green
+  { name = "*.toml",        fg = "#8ec07c" },
+  { name = "*.yaml",        fg = "#8ec07c" },
+  { name = "*.yml",         fg = "#8ec07c" },
+  { name = "*.conf",        fg = "#8ec07c" },
+  { name = "*.ini",         fg = "#8ec07c" },
+
+  # Directories — dark fg on amber bg, bold — impossible to miss
+  # Uses dark0_hard fg so text stays readable against the amber fill
+  # Consistent with active_border, waybar active workspace, mode indicator
+  { name = "*/", fg = "#1d2021", bg = "#d79921", bold = true },
+
+  # Symlinks — italic aqua
+  { name = "*", is = "link", fg = "#8ec07c", italic = true },
+
+  # Orphaned symlinks — muted brick red
+  { name = "*", is = "orphan", fg = "#cc241d", italic = true },
+
+  # Fallback — warm gray
+  { name = "*", fg = "#928374" },
+]

@@ -1,0 +1,197 @@
+# ============================================================
+# dunst — dunstrc — gruvbox dark, photosensitive-friendly
+# Designed to visually merge with waybar (top right)
+# Consistent with:
+#   waybar:   surface rgba(60,56,54,0.95), border #504945, amber #d79921
+#   hyprland: active_border #504945→#d79921, gaps_out = 7
+#   kitty:    font Iosevka, bg #1d2021, fg #d5c4a1
+# Drop at: ~/.config/dunst/dunstrc
+# ============================================================
+
+[global]
+
+    # ── Display ──────────────────────────────────────────────
+    # Follow nothing — fixed position anchored to top-right
+    # so notifications always appear next to waybar
+    follow = none
+    monitor = 0
+
+    # ── Geometry — merging with waybar ───────────────────────
+    # Width matches a comfortable notification card
+    # Origin top-right mirrors waybar position
+    # gap_size = 7 matches hyprland gaps_out exactly so
+    # notifications sit flush in the same spatial rhythm
+    origin = top-right
+    offset = (7, 7)
+    gap_size = 7
+    width = (240, 400)
+    height = (0, 200)
+    scale = 0
+
+    # ── Stacking — newest on top ──────────────────────────────
+    sort = yes
+    # Stack identical notifications rather than flooding
+    stack_duplicates = true
+    hide_duplicate_count = false
+    # Newest appears at top, older ones push down
+    notification_limit = 5
+
+    # ── Padding & spacing ─────────────────────────────────────
+    # Mirrors waybar module margin: 2px 4px + padding: 0 6px
+    padding = 8
+    horizontal_padding = 12
+    text_icon_padding = 10
+    # Thin separator between stacked notifications
+    # Same color as waybar inactive border
+    separator_height = 1
+    separator_color = "#504945"
+
+    # ── Frame (border) ────────────────────────────────────────
+    # 2px matches hyprland border_size = 2
+    frame_width = 2
+    # Default frame color — dim, inactive feel
+    # Urgency sections override this per level
+    frame_color = "#504945"
+
+    # ── Corner radius ─────────────────────────────────────────
+    # 0 matches hyprland rounding commented out + waybar border-radius: 0
+    corner_radius = 0
+
+    # ── Typography ────────────────────────────────────────────
+    # Iosevka matches kitty and waybar font stack
+    font = Iosevka 11
+
+    # ── Format ───────────────────────────────────────────────
+    # App icon shown via icon settings below
+    # %a = appname (small caps via markup), %s = summary, %b = body
+    # \n%a · %d = app name and timestamp on bottom line, dim + italic
+    format = "<b>%s</b>\n%b\n<i><small>%a</small></i>"
+
+    # ── Text ──────────────────────────────────────────────────
+    markup = full
+    alignment = left
+    vertical_alignment = center
+    word_wrap = yes
+    ellipsize = end
+    ignore_newline = no
+    # Matches kitty line height feel
+    line_height = 0
+    # Subtle letter spacing consistent with waybar labels
+    min_icon_size = 24
+    max_icon_size = 32
+    icon_position = left
+
+    # ── Timestamps ────────────────────────────────────────────
+    # Shown inline in the format string above as %d
+    # dunst uses strftime format — configured per-urgency if needed
+
+    # ── Timeouts ──────────────────────────────────────────────
+    # Low: quick, transient info
+    # Normal: comfortable reading time
+    # Critical: stays until dismissed — no auto-expire
+    # All in milliseconds
+    # (set per urgency section below)
+
+    # ── History ───────────────────────────────────────────────
+    sticky_history = yes
+    history_length = 30
+
+    # ── URLs & indicators ────────────────────────────────────
+    show_indicators = no
+
+    # ── Idle behaviour ────────────────────────────────────────
+    # Pause notifications when idle for 2 minutes
+    # Good for photosensitivity — no surprise flashes during focus
+    idle_threshold = 120
+
+    # ── Mouse ─────────────────────────────────────────────────
+    mouse_left_click = do_action
+    mouse_middle_click = close_all
+    mouse_right_click = close_current
+
+    # ── Wayland ───────────────────────────────────────────────
+    force_xwayland = false
+    layer = top
+
+    # ── Misc ──────────────────────────────────────────────────
+    always_run_script = true
+    title = Dunst
+    class = Dunst
+    ignore_dbusclose = false
+
+# ============================================================
+# URGENCY LEVELS
+# Color system mirrors the whole setup:
+#   low      → dim, barely-there — same palette as inactive states
+#   normal   → waybar surface + fg, feels like a bar module
+#   critical → amber frame + dark bg, same accent as active border
+# ============================================================
+
+[urgency_low]
+    # Nearly invisible — tinted dark surface, dim text
+    # Same bg as waybar, fg matches inactive module color
+    background = "#3c3836"
+    foreground = "#665c54"
+    frame_color = "#3c3836"
+    timeout = 4
+    # Icon desaturated — low visual weight
+    default_icon = dialog-information
+
+[urgency_normal]
+    # Feels like a waybar module that slid out:
+    # exact same background as waybar rgba(60,56,54) at full opacity
+    # border matches waybar inactive border #504945
+    background = "#3c3836"
+    foreground = "#d5c4a1"
+    frame_color = "#504945"
+    timeout = 8
+    default_icon = dialog-information
+
+[urgency_critical]
+    # Amber frame — matches hyprland active_border bright end
+    # Dark bg steps down to dark0_hard for contrast
+    # No timeout — must be manually dismissed
+    # Photosensitive safe: no red flash, warm amber accent only
+    background = "#1d2021"
+    foreground = "#d5c4a1"
+    frame_color = "#d79921"
+    timeout = 0
+    default_icon = dialog-warning
+
+# ============================================================
+# APP-SPECIFIC RULES
+# Fine-tune per app where needed
+# ============================================================
+
+# Volume / brightness OSD — short timeout, no body needed
+[volume_osd]
+    appname = "Volume"
+    timeout = 2
+    format = "<b>%s</b>"
+
+[brightness_osd]
+    appname = "Brightness"
+    timeout = 2
+    format = "<b>%s</b>"
+
+# Network manager — normal, slightly longer for connection info
+[networkmanager]
+    appname = "NetworkManager"
+    timeout = 6
+
+# Package manager updates — low urgency, just info
+[pacman]
+    appname = "pacman"
+    urgency = low
+    timeout = 5
+
+# Music / media players — brief, bottom of stack
+[media]
+    appname = "spotify"
+    timeout = 3
+    format = "<b>%s</b>\n<small>%b</small>"
+
+# Critical system alerts — never auto-dismiss
+[system_critical]
+    msg_urgency = critical
+    timeout = 0

@@ -1,0 +1,45 @@
+# ============================================================
+# wofi — config
+# App launcher, center screen, keyboard-only
+# Consistent with hyprland/kitty/waybar gruvbox setup
+# Drop at: ~/.config/wofi/config
+# ============================================================
+
+# ── Mode ─────────────────────────────────────────────────────
+# drun = desktop app launcher (reads .desktop files)
+show=drun
+
+# ── Size & position ──────────────────────────────────────────
+width=600
+height=400
+location=center
+
+# ── Search behaviour ─────────────────────────────────────────
+# fuzzy: matches partial/out-of-order input (e.g. "frf" → Firefox)
+matching=fuzzy
+# case insensitive — firefox matches Firefox
+insensitive=true
+# pressing enter runs the first result, not a raw search
+exec_search=false
+
+# ── Display ──────────────────────────────────────────────────
+# Show app icons next to names
+allow_images=true
+# Render app name formatting (bold, etc from .desktop files)
+allow_markup=true
+# Single column — cleaner, easier to scan vertically
+columns=1
+# Sort alphabetically — predictable, no need to remember usage order
+sort_order=default
+# Hide scrollbar — cleaner look, keyboard nav makes it unnecessary
+hide_scroll=true
+# Prompt shown in search box
+prompt= 
+
+# ── Terminal ─────────────────────────────────────────────────
+# Use kitty for any app that needs a terminal — matches your setup
+term=kitty
+
+# ── Cache ────────────────────────────────────────────────────
+# Stores recently used apps — speeds up fuzzy ranking over time
+cache_file=~/.cache/wofi-drun

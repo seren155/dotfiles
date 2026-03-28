@@ -4,8 +4,8 @@ Mi configuración personal de archivos dots y los programas que acostumbro a uti
 
 ## Software Principal
 **WM:** Hyprland\
-**App Launcher:** wofi\
-**Status Bar:** Waybar (mechabar by @sejjy)\
+**App Launcher:** rofi\
+**Status Bar:** Waybar\
 **Shell:** Fish\
 **Terminal:** Kitty\
 **Editor:** Nvim\
@@ -15,8 +15,6 @@ Mi configuración personal de archivos dots y los programas que acostumbro a uti
 
 ## Reproduccion Multimedia
 **Video:** mpv\
-**Musica:** Clementine
 
-## Theme
-#### Rose Pine Moon
-* nwg-look para aplicar el tema a las aplicaciones GTK
+### Theme
+* Gruvbox

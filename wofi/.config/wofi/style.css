@@ -1,0 +1,130 @@
+/* ============================================================
+   wofi — style.css — gruvbox dark, photosensitive-friendly
+   Consistent with:
+     hyprland: active_border #504945→#d79921, bg #1d2021
+     kitty:    bg #1d2021, fg #d5c4a1, font Iosevka
+     waybar:   surface #3c3836, active amber #d79921
+   Drop at: ~/.config/wofi/style.css
+   ============================================================ */
+
+/* ── Window ──────────────────────────────────────────────────
+   Matches hyprland window surface + shadow treatment          */
+window {
+    /* dark1 surface — same as waybar background */
+    background-color: #3c3836;
+    /* Warm border — matches hyprland inactive_border */
+    border: 2px solid #504945;
+    /* No rounding — matches hyprland rounding commented out */
+    border-radius: 0;
+    /* Subtle shadow consistent with hyprland shadow color */
+    box-shadow: 0 4px 24px rgba(29, 32, 33, 0.8);
+}
+
+/* ── Outer container ─────────────────────────────────────────*/
+#outer-box {
+    margin: 0;
+    padding: 8px;
+    background-color: transparent;
+}
+
+/* ── Search bar ──────────────────────────────────────────────
+   Sits on dark0_hard — one step darker than window surface    */
+#input {
+    background-color: #1d2021;
+    color: #d5c4a1;
+    /* Amber bottom border — matches active workspace underline in waybar */
+    border: none;
+    border-bottom: 2px solid #d79921;
+    border-radius: 0;
+    /* Iosevka — matches kitty font */
+    font-family: Iosevka, monospace;
+    font-size: 14px;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    /* Smooth transition — consistent with waybar 0.2s ease */
+    transition: border-color 0.2s ease;
+    caret-color: #d79921;
+}
+
+#input:focus {
+    /* Brighten amber on focus — same logic as active border in hyprland */
+    border-bottom-color: #fabd2f;
+    outline: none;
+}
+
+/* Placeholder text — dim warm gray */
+#input placeholder {
+    color: #665c54;
+}
+
+/* ── Scrolled window ─────────────────────────────────────────*/
+#scroll {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+/* ── Entry list container ────────────────────────────────────*/
+#inner-box {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+/* ── Individual entries ──────────────────────────────────────*/
+#entry {
+    background-color: transparent;
+    color: #928374;
+    font-family: Iosevka, monospace;
+    font-size: 13px;
+    padding: 6px 10px;
+    border-radius: 0;
+    /* Left border placeholder — invisible until selected */
+    border-left: 2px solid transparent;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/* Unselected — dim warm gray, low visual weight */
+#entry #unselected {
+    color: #928374;
+}
+
+/* ── Selected entry ──────────────────────────────────────────
+   Mirrors hyprland active_border + waybar active workspace    */
+#entry:selected,
+#entry #selected {
+    /* dark0_hard bg — steps down one layer, frames the selection */
+    background-color: #1d2021;
+    color: #d79921;
+    /* Amber left accent bar — echoes waybar active underline direction */
+    border-left: 2px solid #d79921;
+    font-weight: bold;
+}
+
+/* ── App icon ────────────────────────────────────────────────*/
+#img {
+    margin-right: 8px;
+}
+
+/* ── App label ───────────────────────────────────────────────*/
+#text {
+    color: inherit;
+    font-family: Iosevka, monospace;
+    font-size: 13px;
+}
+
+/* ── Scrollbar — hidden per config but styled if ever shown ──*/
+scrollbar {
+    background-color: transparent;
+    width: 4px;
+}
+
+scrollbar thumb {
+    background-color: #504945;
+    border-radius: 0;
+    min-height: 20px;
+}
+
+scrollbar thumb:hover {
+    background-color: #665c54;
+}

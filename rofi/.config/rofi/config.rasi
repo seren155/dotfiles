@@ -1,0 +1,281 @@
+/* ============================================================
+   rofi — config.rasi — gruvbox dark, photosensitive-friendly
+   Consistent with:
+     hyprland: active_border #504945→#d79921, bg #1d2021
+     kitty:    bg #1d2021, fg #d5c4a1, font Iosevka
+     waybar:   surface #3c3836, active amber #d79921
+     yazi:     marker/selected amber, dark0_hard base
+   Drop at: ~/.config/rofi/config.rasi
+   ============================================================ */
+
+/* ── Behaviour ───────────────────────────────────────────────
+   All config options live inside this block                   */
+configuration {
+    /* App launcher + run commands */
+    modes:                  "drun,run";
+    /* Default to drun (app launcher) */
+    show:                   "drun";
+
+    /* ── Matching ─────────────────────────────────────────────
+       normal:  exact substring, scores prefix matches higher
+       This is the key difference vs wofi — rofi's normal mode
+       ranks "Steam" above "Steamos Whatever" when you type
+       "steam", while still showing partial hits below it      */
+    matching:               "normal";
+    tokenize:               true;
+    /* Only match against app name, not generic/comment fields
+       so searching "steam" won't pull in game descriptions    */
+    drun-match-fields:      "name,exec";
+    /* Case insensitive */
+    case-sensitive:         false;
+
+    /* ── Sorting ──────────────────────────────────────────────
+       frecency = frequency + recency combined score
+       Apps you launch often AND recently float to the top     */
+    sort:                   true;
+    sorting-method:         "fzf";
+
+    /* ── Display ──────────────────────────────────────────────*/
+    show-icons:             true;
+    icon-theme:             "Papirus-Dark";
+    /* Use app display name, not exec path */
+    drun-display-format:    "{name}";
+    /* Don't show run mode label in entries */
+    run-command:            "{cmd}";
+    /* Markup for bold/italic in entries */
+    markup:                 true;
+
+    /* ── Lines & layout ───────────────────────────────────────*/
+    lines:                  8;
+    /* Fixed line count — no jumping when results change */
+    fixed-num-lines:        true;
+    /* Hide scrollbar — keyboard nav makes it redundant */
+    scrollbar:              false;
+
+    /* ── Terminal ─────────────────────────────────────────────
+       Used when run mode needs a terminal — matches your setup */
+    terminal:               "kitty";
+
+    /* ── Keyboard ─────────────────────────────────────────────*/
+    /* kb-cancel already defaults to Escape — kept explicit */
+    kb-cancel:              "Escape";
+    kb-accept-entry:        "Return,KP_Enter";
+    kb-row-up:              "Up,Alt+k";
+    kb-row-down:            "Down,Alt+j";
+    /* Switch between drun/run modes */
+    kb-mode-next:           "Control+Tab";
+    kb-mode-previous:       "Control+Shift+Tab";
+}
+
+/* ============================================================
+   THEME
+   All visual styling below — uses rofi's .rasi format
+   ============================================================ */
+
+/* ── Global variables ────────────────────────────────────────*/
+* {
+    /* Gruvbox palette */
+    bg0-hard:       #1d2021;
+    bg1:            #3c3836;
+    bg2:            #504945;
+    bg3:            #665c54;
+    fg0:            #d5c4a1;
+    fg1:            #a89984;
+    fg2:            #928374;
+    amber:          #d79921;
+    amber-dim:      #b57614;
+    blue:           #458588;
+    green:          #8ec07c;
+    red:            #cc241d;
+    aqua:           #689d6a;
+
+    /* Reset rofi defaults */
+    background-color:   transparent;
+    text-color:         @fg0;
+    border-color:       @bg2;
+}
+
+/* ── Window ──────────────────────────────────────────────────
+   dark1 surface + inactive_border consistent with hyprland   */
+window {
+    width:              600px;
+    /* height driven by lines count, not fixed */
+    background-color:   @bg1;
+    border:             2px solid;
+    border-color:       @bg2;
+    border-radius:      0;
+
+    padding:            0;
+}
+
+/* ── Main layout box ─────────────────────────────────────────*/
+mainbox {
+    background-color:   transparent;
+    border:             0;
+    padding:            8px;
+    spacing:            6px;
+    children:           [ inputbar, message, listview, mode-switcher ];
+}
+
+/* ── Input bar ───────────────────────────────────────────────
+   dark0_hard bg — one layer below window surface             */
+inputbar {
+    background-color:   @bg0-hard;
+    border:             0 0 2px 0;
+    border-color:       @amber;
+    border-radius:      0;
+    padding:            8px 12px;
+    spacing:            8px;
+    children:           [ prompt, textbox-prompt-colon, entry ];
+}
+
+prompt {
+    background-color:   transparent;
+    text-color:         @amber;
+    font:               "Iosevka Bold 13";
+}
+
+textbox-prompt-colon {
+    background-color:   transparent;
+    text-color:         @bg3;
+    expand:             false;
+    str:                "›";
+    font:               "Iosevka 13";
+}
+
+entry {
+    background-color:   transparent;
+    text-color:         @fg0;
+    font:               "Iosevka 13";
+    placeholder:        "Search apps…";
+    placeholder-color:  @bg3;
+    cursor:             text;
+    cursor-color:       @amber;
+}
+
+/* ── List view ───────────────────────────────────────────────*/
+listview {
+    background-color:   @bg1;
+    border:             0;
+    padding:            4px 0;
+    spacing:            0;
+    lines:              8;
+    fixed-height:       true;
+    scrollbar:          false;
+    columns:            1;
+    layout:             vertical;
+}
+
+/* ── List entries ────────────────────────────────────────────*/
+element {
+    background-color:   @bg1;
+    text-color:         @fg2;
+    font:               "Iosevka 13";
+    padding:            6px 10px;
+    border-radius:      0;
+    border:             0;
+    spacing:            8px;
+    orientation:        horizontal;
+}
+
+/* Selected — dark bg, amber text, left accent bar only */
+element selected.normal {
+    background-color:   @bg0-hard;
+    text-color:         @amber;
+    border:             0 0 0 2px;
+    border-color:       @amber;
+    font:               "Iosevka Bold 13";
+}
+
+element selected.normal element-icon {
+    background-color:   @bg0-hard;
+}
+
+element selected.normal element-text {
+    background-color:   @bg0-hard;
+}
+
+/* Urgent entries — muted brick red */
+element selected.urgent {
+    background-color:   @bg0-hard;
+    text-color:         @red;
+    border-color:       @red;
+}
+
+/* Active entries (already running apps) — steel blue */
+element selected.active {
+    background-color:   @bg0-hard;
+    text-color:         @blue;
+    border-color:       @blue;
+}
+
+/* Kill alternate row coloring — rofi applies these by default */
+element alternate.normal,
+element alternate.urgent,
+element alternate.active {
+    background-color:   @bg1;
+    text-color:         @fg2;
+    border:             0;
+}
+
+element normal.normal {
+    background-color:   @bg1;
+    text-color:         @fg2;
+    border:             0;
+}
+
+/* ── Entry icon ──────────────────────────────────────────────*/
+element-icon {
+    background-color:   inherit;
+    size:               20px;
+    cursor:             inherit;
+}
+
+/* ── Entry text ──────────────────────────────────────────────*/
+element-text {
+    background-color:   inherit;
+    text-color:         inherit;
+    font:               inherit;
+    cursor:             inherit;
+    vertical-align:     0.5;
+    highlight:          bold #d79921;
+}
+
+/* ── Mode switcher (drun / run tab strip) ────────────────────*/
+mode-switcher {
+    background-color:   transparent;
+    border:             2px 0 0 0;
+    border-color:       @bg2;
+    padding:            4px 0 0 0;
+    spacing:            4px;
+}
+
+button {
+    background-color:   transparent;
+    text-color:         @fg2;
+    font:               "Iosevka 13";
+    padding:            4px 10px;
+    border:             0 0 2px 0;
+    border-color:       transparent;
+    border-radius:      0;
+}
+
+button selected {
+    text-color:         @amber;
+    border-color:       @amber;
+    font:               "Iosevka Bold 13";
+}
+
+/* ── Message box (errors/info) ───────────────────────────────*/
+message {
+    background-color:   @bg0-hard;
+    border:             0 0 2px 0;
+    border-color:       @bg2;
+    padding:            6px 10px;
+}
+
+textbox {
+    background-color:   transparent;
+    text-color:         @fg1;
+    font:               "Iosevka 13";
+}
