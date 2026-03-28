@@ -14,7 +14,7 @@ Mi configuración personal de archivos dots y los programas que acostumbro a uti
 **Wallpaper:** Waypaper + swaybg
 
 ## Reproduccion Multimedia
-**Video:** mpv\
+**Video:** mpv
 
 ### Theme
-* Gruvbox
+* [Gruvbox](https://github.com/morhetz/gruvbox)
