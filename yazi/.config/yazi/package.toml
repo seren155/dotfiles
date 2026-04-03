@@ -3,5 +3,10 @@ use = "yazi-rs/plugins:mount"
 rev = "88990a6"
 hash = "9ad20d763df07ce40fd09de549d914b0"
 
+[[plugin.deps]]
+use = "pirafrank/what-size"
+rev = "179ebf6"
+hash = "57056b9728006881d580ccabe8154a9c"
+
 [flavor]
 deps = []

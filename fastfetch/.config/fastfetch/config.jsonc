@@ -1,0 +1,178 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+
+    // ============================================================
+    // fastfetch config — gruvbox dark, photosensitive-friendly
+    // Image: ~/Pictures/fetch/fetch.jpg (kitty icat protocol)
+    // Consistent with full gruvbox system palette
+    // Drop at: ~/.config/fastfetch/config.jsonc
+    // ============================================================
+
+    "logo": {
+        // Use your jpg via kitty's image protocol
+        // Change "kitty" to "sixel" if not using kitty
+        "type": "kitty",
+        "source": "~/Pictures/Fetch/fetch.jpg",
+        "width": 32,
+        "preserveAspectRatio": true,
+        // Padding between image and info columns
+        "padding": {
+            "top": 1,
+            "left": 1,
+            "right": 2
+        }
+    },
+
+    "display": {
+        // Separator between key and value — amber colored in modules
+        "separator": " ─ ",
+        // Column spacing
+        "size": {
+            "binaryPrefix": "si"
+        },
+        "color": {
+            // Key color — amber, matches active_border + waybar active
+            "keys": "33",
+            // Title color — warm fg0
+            "title": "33"
+        }
+    },
+
+    "modules": [
+        // ── Title: user@hostname ───────────────────────────────
+        {
+            "type": "title",
+            "format": "{6}{7}{8}",
+            // user@host in amber
+            "color": {
+                "user": "33",
+                "at": "238",
+                "host": "33"
+            }
+        },
+
+        // ── Thin separator ─────────────────────────────────────
+        {
+            "type": "separator",
+            "string": "─",
+            "color": {
+                "separator": "238"
+            }
+        },
+
+        // ── OS ─────────────────────────────────────────────────
+        {
+            "type": "os",
+            "key": " OS",
+            "keyColor": "33"
+        },
+
+        // ── Kernel ─────────────────────────────────────────────
+        {
+            "type": "kernel",
+            "key": " Kernel",
+            "keyColor": "33"
+        },
+
+        // ── Uptime ─────────────────────────────────────────────
+        {
+            "type": "uptime",
+            "key": "󱑃 Uptime",
+            "keyColor": "136"
+        },
+
+        // ── Packages ───────────────────────────────────────────
+        {
+            "type": "packages",
+            "key": "󰏖 Packages",
+            "keyColor": "172"
+        },
+
+        // ── Shell ──────────────────────────────────────────────
+        {
+            "type": "shell",
+            "key": " Shell",
+            "keyColor": "108"
+        },
+
+        // ── Display / resolution ───────────────────────────────
+        {
+            "type": "display",
+            "key": " Display",
+            "keyColor": "66"
+        },
+
+        // ── WM / Compositor ────────────────────────────────────
+        {
+            "type": "wm",
+            "key": " WM",
+            "keyColor": "33"
+        },
+
+        // ── Terminal ───────────────────────────────────────────
+        {
+            "type": "terminal",
+            "key": " Terminal",
+            "keyColor": "108"
+        },
+
+        // ── CPU ────────────────────────────────────────────────
+        {
+            "type": "cpu",
+            "key": "󰻠 CPU",
+            "keyColor": "66",
+            // Show frequency and temp — useful, not excessive
+            "showPeCoreCount": false,
+            "temp": true,
+            "freqNdigits": 1
+        },
+
+        // ── GPU ────────────────────────────────────────────────
+        {
+            "type": "gpu",
+            "key": "󰍛 GPU",
+            "keyColor": "172",
+            "temp": true
+        },
+
+        // ── Memory ─────────────────────────────────────────────
+        {
+            "type": "memory",
+            "key": "󰾆 Memory",
+            "keyColor": "132"
+        },
+
+        // ── Disk ───────────────────────────────────────────────
+        {
+            "type": "disk",
+            "key": "󰋊 Disk",
+            "keyColor": "172",
+            "folders": "/"
+        },
+
+        // ── Separator before color palette ─────────────────────
+        {
+            "type": "separator",
+            "string": "─",
+            "color": {
+                "separator": "238"
+            }
+        },
+
+        // ── Gruvbox color palette swatch ───────────────────────
+        // Shows the 8 gruvbox neutral colors as blocks
+        // Visually confirms theme is active — low brightness, no flash
+        {
+            "type": "colors",
+            "paddingLeft": 0,
+            "symbol": "block",
+            "block": {
+                "width": 3,
+                "range": {
+                    "start": 0,
+                    "end": 7
+                }
+            }
+        }
+    ]
+}
