@@ -23,7 +23,7 @@ window#waybar {
     /* dark1 (#3c3836) rather than dark0_hard — lifts the bar one layer
        above the raw compositor background, matching hyprland window surfaces.
        Slight transparency echoes hyprland inactive_opacity: 0.95           */
-    background-color: rgba(60, 56, 54, 0.95);
+    background-color: rgba(60, 56, 54, 0.82);
     color: #928374;
 }
 

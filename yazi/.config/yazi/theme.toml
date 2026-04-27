@@ -10,7 +10,7 @@
 
 # ── App ──────────────────────────────────────────────────────
 [app]
-# dark0_hard — matches kitty + hyprland compositor background
+# dark0_hard
 overall = { bg = "#1d2021" }
 
 # ── Manager ──────────────────────────────────────────────────
