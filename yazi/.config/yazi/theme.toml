@@ -6,17 +6,23 @@
 #   waybar:   amber active (#d79921), surface (#3c3836)
 # ============================================================
 
-"$schema" = "https://yazi-rs.github.io/schemas/theme.json"
-
 # ── App ──────────────────────────────────────────────────────
 [app]
-# dark0_hard
+# dark0_hard — matches kitty + hyprland compositor background
 overall = { bg = "#1d2021" }
 
 # ── Manager ──────────────────────────────────────────────────
 [mgr]
 # CWD bar — amber, matches hyprland active_border bright end + waybar active workspace
 cwd = { fg = "#d79921", bold = true }
+
+# Hovered row — dark2 bg, warm fg — subtle lift, not aggressive
+hovered   = { fg = "#d5c4a1", bg = "#504945", bold = true }
+# Preview hovered — slightly dimmer
+previewed = { fg = "#a89984", bg = "#3c3836" }
+
+# Selected rows (multi-select) — amber text on dark1
+selected  = { fg = "#d79921", bg = "#3c3836" }
 
 # Search highlight — steel blue, same as kitty color4 / waybar #cpu
 find_keyword  = { fg = "#458588", bold = true, underline = true }
@@ -157,29 +163,24 @@ rules = [
   { mime = "application/xml",            fg = "#458588" },
 
   # Executables — dusty mauve, matches kitty color5 / waybar #memory
-  { name = "*.sh",          fg = "#b16286" },
-  { name = "*.bash",        fg = "#b16286" },
-  { name = "*.zsh",         fg = "#b16286" },
-  { name = "*.fish",        fg = "#b16286" },
+  { mime = "application/x-shellscript", fg = "#b16286" },
+  { mime = "text/x-shellscript",        fg = "#b16286" },
 
   # Configs/dotfiles — soft green
-  { name = "*.toml",        fg = "#8ec07c" },
-  { name = "*.yaml",        fg = "#8ec07c" },
-  { name = "*.yml",         fg = "#8ec07c" },
-  { name = "*.conf",        fg = "#8ec07c" },
-  { name = "*.ini",         fg = "#8ec07c" },
+  { mime = "text/x-toml",  fg = "#8ec07c" },
+  { mime = "text/x-yaml",  fg = "#8ec07c" },
+  { mime = "text/yaml",    fg = "#8ec07c" },
+  { mime = "text/x-ini",   fg = "#8ec07c" },
 
-  # Directories — dark fg on amber bg, bold — impossible to miss
-  # Uses dark0_hard fg so text stays readable against the amber fill
-  # Consistent with active_border, waybar active workspace, mode indicator
-  { name = "*/", fg = "#1d2021", bg = "#d79921", bold = true },
+  # Directories — amber text, bold — easy to locate without overwhelming
+  { url = "*/", fg = "#d79921", bold = true },
 
   # Symlinks — italic aqua
-  { name = "*", is = "link", fg = "#8ec07c", italic = true },
+  { url = "*", is = "link",   fg = "#8ec07c", italic = true },
 
   # Orphaned symlinks — muted brick red
-  { name = "*", is = "orphan", fg = "#cc241d", italic = true },
+  { url = "*", is = "orphan", fg = "#cc241d", italic = true },
 
   # Fallback — warm gray
-  { name = "*", fg = "#928374" },
+  { url = "*", fg = "#928374" },
 ]
