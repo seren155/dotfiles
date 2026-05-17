@@ -9,12 +9,12 @@ Mi configuración personal de archivos dots y los programas que acostumbro a uti
 **Shell:** Fish\
 **Terminal:** Kitty\
 **Editor:** Nvim\
-**File Manager:** yazi (+ dolphin)\
+**File Manager:** yazi (+ thunar)\
 **Password Manager:** KeepassXC\
 **Wallpaper:** Waypaper + swaybg
 
 ## Reproduccion Multimedia
-**Video:** mpv
+**Multimedia:** mpv
 
 ### Theme
 * [Gruvbox](https://github.com/morhetz/gruvbox)

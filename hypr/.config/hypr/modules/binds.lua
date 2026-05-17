@@ -28,6 +28,7 @@ hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + SHIFT + G", hl.dsp.exec_cmd("~/.local/bin/applications/Telegram/Telegram"))
 hl.bind(mainMod .. " + SHIFT + X", hl.dsp.exec_cmd("keepassxc"))
 hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("kitty -e nvim"))
+hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd(terminal .. " -e btop"))
 
 ------------------
 ---- BEHAIVOR ----
