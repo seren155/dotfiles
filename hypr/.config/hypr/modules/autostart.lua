@@ -14,10 +14,11 @@
 -- end)
 
 hl.on("hyprland.start", function()
-	hl.exec_cmd("waybar")
+	hl.exec_cmd("systemctl --user enable --now waybar.service")
 	hl.exec_cmd("waypaper --restore")
 	hl.exec_cmd("systemctl --user start hyprpolkitagent")
 	hl.exec_cmd("hypridle")
 	hl.exec_cmd("/usr/lib/pam_kwallet_init")
 	hl.exec_cmd("sleep 5 && qbittorrent")
+	hl.exec_cmd("hyprctl setcursor Adwaita 24")
 end)

@@ -3,7 +3,7 @@
 -------------------------------
 
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
-
+hl.env("HYPRCURSOR_THEME", "Adwaita")
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
 
@@ -23,4 +23,3 @@ hl.env("QT_AUTO_SCREEN_SCALE_FACTOR", "1") -- (From the Qt documentation) enable
 hl.env("QT_QPA_PLATFORM", "wayland;xcb") -- Tell Qt applications to use the Wayland backend, and fall back to X11 if Wayland is unavailable
 hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1") -- Disables window decorations on Qt applications
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct") -- Tells Qt based applications to pick your theme from qt6ct, use with Kvantum.
-

@@ -9,36 +9,39 @@ local fileManager_alt = "thunar"
 local menu = "rofi -show drun"
 -- local menu = "walker"
 local browser = "firefox"
+local audiocontrol = "pavucontrol"
 
 ---------------------
 ---- KEYBINDINGS ----
 ---------------------
 
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
+local h = require("modules.helpers")
 
 ------------------------
 ---- LAUNCHING APPS ----
 ------------------------
+h.bind("SUPER + RETURN", terminal)
+h.bind("SUPER + SHIFT + RETURN", browser)
+h.bind("SUPER + E", fileManager)
+h.bind("SUPER + SHIFT + E", fileManager_alt)
+h.bind("SUPER + SPACE", menu)
+h.bind("SUPER + SHIFT + G", "~/.local/bin/applications/Telegram/Telegram")
+h.bind("SUPER + SHIFT + X", "keepassxc")
+h.bind("SUPER + SHIFT + N", terminal .. " -e nvim")
+h.bind("SUPER + SHIFT + O", "obsidian")
+h.bind("SUPER + SHIFT + S", "steam")
 
-hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
-hl.bind(mainMod .. " + SHIFT + RETURN", hl.dsp.exec_cmd(browser))
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exec_cmd(fileManager_alt))
-hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + SHIFT + G", hl.dsp.exec_cmd("~/.local/bin/applications/Telegram/Telegram"))
-hl.bind(mainMod .. " + SHIFT + X", hl.dsp.exec_cmd("keepassxc"))
-hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("kitty -e nvim"))
-hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd(terminal .. " -e btop"))
+-- SYSTEM CONTROL
+h.bind("SUPER + SHIFT + A", audiocontrol)
+h.bind("SUPER + CTRL + S", "localsend")
+h.bind("SUPER + SHIFT + T", terminal .. " -e btop")
+h.bind("SUPER + PERIOD", "rofi -modi emoji -show emoji -emoji-format '{emoji}'") ------------------
 
-------------------
----- BEHAIVOR ----
-------------------
-
-------------------
 ---- CAPTURE -----
 ------------------
 
-hl.bind("PRINT", hl.dsp.exec_cmd(".local/bin/scripts/omarchy-capture-screenshot"))
+hl.bind("PRINT", hl.dsp.exec_cmd("~/.local/bin/scripts/omarchy-capture-screenshot"))
 
 local closeWindowBind = hl.bind(mainMod .. " + W", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
@@ -66,7 +69,7 @@ end
 
 -- Example special workspace (scratchpad)
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+-- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
