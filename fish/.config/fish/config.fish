@@ -80,6 +80,10 @@ if command -q yazi
     alias y='yazi'
 end
 
+if command -q nvim
+    alias n='nvim'
+end
+
 # Safety nets
 alias cp='cp -i'
 alias mv='mv -i'
