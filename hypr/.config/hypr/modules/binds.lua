@@ -6,7 +6,7 @@
 local terminal = "kitty"
 local fileManager = "kitty yazi"
 local fileManager_alt = "thunar"
-local menu = "rofi -show drun"
+local menu = "rofi -show drun -show-icons -run-command 'runapp {cmd}'"
 -- local menu = "walker"
 local browser = "firefox"
 local audiocontrol = "pavucontrol"
@@ -32,12 +32,13 @@ h.bind("SUPER + SHIFT + N", terminal .. " -e nvim")
 h.bind("SUPER + SHIFT + O", "obsidian")
 h.bind("SUPER + SHIFT + S", "steam")
 h.bind("SUPER + CTRL + A", "pavucontrol")
+h.bind("SUPER + CTRL + O", "obs")
 
 --------------------
 -- SYSTEM CONTROL --
 --------------------
 h.bind("SUPER + SHIFT + A", audiocontrol)
-h.bind("SUPER + CTRL + S", "localsend")
+h.bind("SUPER + CTRL + L", "localsend")
 h.bind("SUPER + SHIFT + T", terminal .. " -e btop")
 h.bind("SUPER + PERIOD", "rofi -modi emoji -show emoji -emoji-format '{emoji}'") ------------------
 h.bind("SUPER + ESCAPE", "wlogout")
