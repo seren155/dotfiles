@@ -1,9 +1,10 @@
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
 -------------------------------
-
+local cursor = "Adwaita"
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
-hl.env("HYPRCURSOR_THEME", "Adwaita")
+hl.env("HYPRCURSOR_THEME", cursor)
+hl.env("XCURSOR_TRHEME", cursor)
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
 
@@ -12,6 +13,10 @@ hl.env("GDK_BACKEND", "wayland,x11,*") -- GTK: Use Wayland if available; if not,
 hl.env("QT_QPA_PLATFORM", "wayland;xcb") -- Qt: Use Wayland if available, fall back to X11 if not.
 hl.env("SDL_VIDEODRIVER", "wayland") -- Run SDL2 applications on Wayland. Remove or set to x11 if games that provide older versions of SDL cause compatibility issues
 hl.env("CLUTTER_BACKEND", "wayland") -- Clutter package already has Wayland enabled, this variable will force Clutter applications to try and use the Wayland backend
+hl.env("QT_STYLE_OVERRIDE", "kvantum")
+hl.env("MOZ_ENABLE_WAYLAND", "1")
+hl.env("ELECTRON_OZONE_PLATFORM_HINT", "wayland")
+hl.env("OZONE_PLATFORM", "wayland")
 
 -- XDG Specifications
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")

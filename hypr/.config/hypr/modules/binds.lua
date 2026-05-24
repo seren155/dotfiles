@@ -31,13 +31,18 @@ h.bind("SUPER + SHIFT + X", "keepassxc")
 h.bind("SUPER + SHIFT + N", terminal .. " -e nvim")
 h.bind("SUPER + SHIFT + O", "obsidian")
 h.bind("SUPER + SHIFT + S", "steam")
+h.bind("SUPER + CTRL + A", "pavucontrol")
 
--- SYSTEM CONTROL
+--------------------
+-- SYSTEM CONTROL --
+--------------------
 h.bind("SUPER + SHIFT + A", audiocontrol)
 h.bind("SUPER + CTRL + S", "localsend")
 h.bind("SUPER + SHIFT + T", terminal .. " -e btop")
 h.bind("SUPER + PERIOD", "rofi -modi emoji -show emoji -emoji-format '{emoji}'") ------------------
+h.bind("SUPER + ESCAPE", "wlogout")
 
+------------------
 ---- CAPTURE -----
 ------------------
 
