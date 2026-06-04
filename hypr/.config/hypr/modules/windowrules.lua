@@ -31,6 +31,13 @@ hl.window_rule({
 	no_focus = true,
 })
 
+hl.window_rule({
+	name = "KeePassXC",
+	match = {
+		class = "^(KeePassXC)$",
+	},
+	workspace = "name:🗝 silent",
+})
 -- Layer rules also return a handle.
 -- local overlayLayerRule = hl.layer_rule({
 --     name  = "no-anim-overlay",
@@ -47,3 +54,4 @@ hl.window_rule({
 	move = "20 monitor_h-120",
 	float = true,
 })
+
