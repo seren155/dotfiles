@@ -48,6 +48,9 @@
              "default": ""
          }
      },
+    "hyprland/language": {
+          "format": "{short} {variant}",
+    },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -101,8 +104,9 @@
         }
     },
     "tray": {
-        // "icon-size": 21,
+        "icon-size": 21,
         "spacing": 10,
+        "reverse-direction": true,
         // "icons": {
         //   "blueman": "bluetooth",
         //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
@@ -110,6 +114,7 @@
     },
     "clock": {
         // "timezone": "America/New_York",
+        "format": "{:%H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
@@ -120,18 +125,26 @@
     "memory": {
         "format": "{used:0.1f}G/{total:0.1f}G "
     },
+
     "disk": {
-        "interval": 30,
+        "interval": 60,
         "format": "{specific_free:0.1f}G ",
         "path": "/",
         "unit": "GB"
     },
     "disk#hades": {
-        "interval": 30,
+        "interval": 60,
         "format": "{specific_free:0.1f}G ",
-        "path": "/mnt/hades/",
+        "path": "/mnt/HADES/",
         "unit": "GB"
     },
+    "disk#hestia": {
+        "interval": 60,
+        "format": "{specific_free:0.1f}G ",
+        "path": "/mnt/HESTIA/",
+        "unit": "GB"
+    },
+
     "temperature": {
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
@@ -175,9 +188,10 @@
       }
     },
     "network": {
+        "interval": 1,
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-ethernet": "{bandwidthDownBytes}↓ {ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
