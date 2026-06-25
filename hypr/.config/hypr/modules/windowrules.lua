@@ -32,6 +32,14 @@ hl.window_rule({
 })
 
 hl.window_rule({
+	name = "Firefox",
+	match = {
+		class = "^[Ff]irefox$",
+	},
+	idle_inhibit = "fullscreen",
+})
+
+hl.window_rule({
 	name = "KeePassXC",
 	match = {
 		class = "^(KeePassXC)$",
@@ -54,4 +62,3 @@ hl.window_rule({
 	move = "20 monitor_h-120",
 	float = true,
 })
-

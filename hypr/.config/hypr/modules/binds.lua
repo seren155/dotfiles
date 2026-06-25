@@ -18,52 +18,17 @@ local audiocontrol = "pavucontrol"
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 local h = require("modules.helpers")
 
-------------------------
----- LAUNCHING APPS ----
-------------------------
+-- SUPER - Navigation, layout, core window actions, frequent apps --
 h.bind("SUPER + RETURN", terminal)
-h.bind("SUPER + SHIFT + RETURN", browser)
-h.bind("SUPER + E", fileManager)
-h.bind("SUPER + SHIFT + E", fileManager_alt)
-h.bind("SUPER + SPACE", menu)
-h.bind("SUPER + SHIFT + G", "~/.local/bin/applications/Telegram/Telegram")
-h.bind("SUPER + SHIFT + X", "keepassxc")
-h.bind("SUPER + SHIFT + N", terminal .. " -e nvim")
-h.bind("SUPER + SHIFT + O", "obsidian")
-h.bind("SUPER + SHIFT + S", "steam")
-h.bind("SUPER + CTRL + A", "pavucontrol")
-h.bind("SUPER + CTRL + O", "obs")
-
---------------------
--- SYSTEM CONTROL --
---------------------
-h.bind("SUPER + SHIFT + A", audiocontrol)
-h.bind("SUPER + CTRL + L", "localsend")
-h.bind("SUPER + SHIFT + T", terminal .. " -e btop")
-h.bind("SUPER + PERIOD", "rofi -modi emoji -show emoji -emoji-format '{emoji}'") ------------------
+h.bind("SUPER + B", browser)
 h.bind("SUPER + ESCAPE", "wlogout")
-
-------------------
----- CAPTURE -----
-------------------
-
+h.bind("SUPER + PERIOD", "rofi -modi emoji -show emoji -emoji-format '{emoji}'") ------------------
+h.bind("SUPER + SPACE", menu)
+h.bind("SUPER + E", fileManager)
 hl.bind("PRINT", hl.dsp.exec_cmd("~/.local/bin/scripts/omarchy-capture-screenshot"))
-
-local closeWindowBind = hl.bind(mainMod .. " + W", hl.dsp.window.close())
+hl.bind(mainMod .. " + T", hl.dsp.layout("togglesplit")) -- dwindle only
+local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
-hl.bind(
-	mainMod .. " + M",
-	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
-)
-hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
-
--- Move focus with mainMod + arrow keys
-hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
@@ -73,17 +38,46 @@ for i = 1, 10 do
 	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
 
--- Example special workspace (scratchpad)
-hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
--- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 
--- Scroll through existing workspaces with mainMod + scroll
-hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
+-- Move focus with mainMod + vim keys
+hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))
+hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
+hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }))
 
+-- SUPER + SHIFT - App Launchers, move window to workspace, guarded destructive actions - App Launchers, move window to workspace, guarded destructive actions - App Launchers, move window to workspace, guarded destructive actions - App Launchers, move window to workspace, guarded destructive actions - App Launchers, move window to workspace, guarded destructive actions - App Launchers, move window to workspace, guarded destructive actions - App Launchers, move window to workspace, guarded destructive actions
+h.bind("SUPER + SHIFT + E", fileManager_alt)
+h.bind("SUPER + SHIFT + T", "~/.local/bin/applications/Telegram/Telegram")
+h.bind("SUPER + SHIFT + K", "keepassxc")
+h.bind("SUPER + SHIFT + N", terminal .. " -e nvim")
+h.bind("SUPER + SHIFT + O", "obsidian")
+h.bind("SUPER + SHIFT + S", "steam")
+
+hl.bind(
+	mainMod .. " + SHIFT + M",
+	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
+)
+
+-- SUPER + CTRL - System tools, utilities, peripherals --
+h.bind("SUPER + CTRL + L", "localsend")
+h.bind("SUPER + CTRL + R", "obs")
+h.bind("SUPER + CTRL + T", terminal .. " -e btop")
+h.bind("SUPER + CTRL + A", audiocontrol)
+
+---- SUPER + ALT - Resize and window manipulation -----
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+
+-- Example special workspace (scratchpad)
+hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
+-- hl.bind(mainMod .. " + grave", hl.dsp.window.move({ workspace = "special:magic" }))
+
+-- Scroll through existing workspaces with mainMod + scroll
+hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e+1" }))
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind(
@@ -101,11 +95,7 @@ hl.bind(
 	hl.dsp.exec_cmd("swayosd-client --output-volume mute-toggle"),
 	{ locked = true, repeating = true }
 )
-hl.bind(
-	"XF86AudioMicMute",
-	hl.dsp.exec_cmd("swayosd-client --input-volume mute-toggle"),
-	{ locked = true, repeating = true }
-)
+
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
 
