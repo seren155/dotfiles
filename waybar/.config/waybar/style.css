@@ -8,27 +8,21 @@
 
 /* ── Variables ─────────────────────────────────────────────── */
 * {
-    /* Iosevka first — matches kitty, falls back gracefully */
-    font-family: Iosevka, FontAwesome, monospace;
+    font-family: "CommitMono Nerd Font Mono", monospace;
     font-size: 13px;
     border: none;
     border-radius: 0;
 
-    /* Smooth transitions everywhere — no harsh instant color snaps */
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 /* ── Bar surface ────────────────────────────────────────────── */
 window#waybar {
-    /* dark1 (#3c3836) rather than dark0_hard — lifts the bar one layer
-       above the raw compositor background, matching hyprland window surfaces.
-       Slight transparency echoes hyprland inactive_opacity: 0.95           */
     background-color: rgba(60, 56, 54, 0.82);
     color: #928374;
 }
 
 /* ── Module shared spacing ──────────────────────────────────── */
-/* gaps_in = 2 in hyprland — keep module spacing tight and consistent */
 #clock,
 #cpu,
 #memory,
@@ -49,29 +43,25 @@ window#waybar {
 }
 
 #workspaces button {
-    color: #665c54;               /* dark3 — dim, inactive */
+    color: #665c54;
     background-color: transparent;
     padding: 0 6px;
     border-bottom: 2px solid transparent;
 }
 
 #workspaces button:hover {
-    /* dark2 surface lift — mirrors the dimmer end of hyprland active_border */
     background-color: rgba(80, 73, 69, 0.6);
     color: #a89984;
     border-bottom: 2px solid #504945;
 }
 
 #workspaces button.active {
-    /* Amber accent — directly mirrors hyprland col.active_border bright end */
     color: #d79921;
     background-color: rgba(80, 73, 69, 0.4);
-    /* Underline instead of filled box — lighter visual weight, less strobing */
     border-bottom: 2px solid #d79921;
 }
 
 #workspaces button.urgent {
-    /* Muted brick red — matches hyprland shadow color family, not alarming */
     color: #cc241d;
     border-bottom: 2px solid #cc241d;
 }
@@ -85,45 +75,37 @@ window#waybar {
 
 /* ── Clock ──────────────────────────────────────────────────── */
 #clock {
-    /* neutral_aqua — calm, readable, same as kitty color6 */
     color: #689d6a;
 }
 
 /* ── System stats ───────────────────────────────────────────── */
 #cpu {
-    /* neutral_blue — steel, same as kitty color4 */
     color: #458588;
 }
 
 #memory {
-    /* neutral_purple — dusty mauve, same as kitty color5 */
     color: #b16286;
 }
 
 #disk {
-    /* neutral_orange — earthy, same as kitty color1 family */
     color: #d65d0e;
 }
 
 /* ── Network ────────────────────────────────────────────────── */
 #network {
-    /* bright_aqua — soft green, same as kitty color2 family */
     color: #8ec07c;
 }
 
 #network.disconnected {
-    /* brick red on disconnect — muted, not alarming */
     color: #cc241d;
 }
 
 /* ── Audio ──────────────────────────────────────────────────── */
 #pulseaudio {
-    /* neutral_yellow/amber — matches hyprland active_border bright end exactly */
     color: #d79921;
 }
 
 #pulseaudio.muted {
-    /* gray on mute — visually quieter */
     color: #665c54;
 }
 
@@ -146,7 +128,6 @@ window#waybar {
 }
 
 #idle_inhibitor.activated {
-    /* amber when active — consistent accent with active border/workspaces */
     color: #d79921;
 }
 
@@ -165,4 +146,48 @@ window#waybar {
 
 #language {
     color: #928374;
+}
+
+/* ── Keyboard state ─────────────────────────────────────────── */
+#keyboard-state {
+    margin: 2px 4px;
+    padding: 0 6px;
+    color: #665c54;
+}
+
+#keyboard-state.locked {
+    color: #d79921;
+}
+
+/* ── Scratchpad ─────────────────────────────────────────────── */
+#scratchpad {
+    margin: 2px 4px;
+    padding: 0 6px;
+    color: #665c54;
+}
+
+#scratchpad.empty {
+    opacity: 0;
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+}
+
+/* ── Media player ───────────────────────────────────────────── */
+#custom-media {
+    margin: 2px 4px;
+    padding: 0 6px;
+    color: #8ec07c;
+}
+
+/* ── Power button ───────────────────────────────────────────── */
+#custom-power {
+    margin: 2px 8px 2px 4px;
+    padding: 0 6px;
+    color: #665c54;
+}
+
+#custom-power:hover {
+    color: #cc241d;
+    background-color: rgba(204, 36, 29, 0.15);
 }
