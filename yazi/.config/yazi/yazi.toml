@@ -6,10 +6,14 @@ play = [
 open = [
 	{ run = 'imv "$@"', block = false, for = "unix", desc = "Open" },
 ]
+edit = [
+{ run = 'nvim "$@"', block = true, desc = "Edit text file with nvim"},
+]
 
 [open]
 rules = [
     { mime = "video/*", use = "play" },
     { mime = "audio/*", use = "play" },
     { mime = "image/*", use = "open" },
+    { mime = "text/*", use = "edit"},
 ]
