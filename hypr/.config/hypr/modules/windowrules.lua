@@ -32,14 +32,6 @@ hl.window_rule({
 })
 
 hl.window_rule({
-	name = "Firefox",
-	match = {
-		class = "^[Ff]irefox$",
-	},
-	idle_inhibit = "fullscreen",
-})
-
-hl.window_rule({
 	name = "KeePassXC",
 	match = {
 		class = "^(KeePassXC)$",
@@ -61,4 +53,10 @@ hl.window_rule({
 
 	move = "20 monitor_h-120",
 	float = true,
+})
+
+-- don't trigger hypridle for fullscreen programs
+hl.window_rule({
+	name = "inhibit idle while fullscreen",
+	idle_inhibit = "fullscreen",
 })
