@@ -57,6 +57,47 @@ hl.window_rule({
 
 -- don't trigger hypridle for fullscreen programs
 hl.window_rule({
-	name = "inhibit idle while fullscreen",
+	match = {
+		class = "^(.*)$",
+	},
 	idle_inhibit = "fullscreen",
+	immediate = true,
+	no_shadow = true,
+	no_blur = true,
+	no_anim = true,
+	rounding = 0,
+})
+
+-- Float and center dialogs/pickers
+hl.window_rule({
+	name = "float-dialogs",
+	match = { title = "^(Open File|Save As|Library|Picture-in-Picture|About)$" },
+	float = true,
+	center = true,
+})
+
+-- Picture-in-Picture
+hl.window_rule({
+	name = "pip-corner",
+	match = { title = "^(Picture-in-Picture)$" },
+	float = true,
+	pin = true,
+	move = "100%-w-20 100%-h-20",
+	size = "25% 25%",
+})
+
+-- Steam
+hl.window_rule({
+	name = "steam-dialogs",
+	match = { class = "^(steam)$", title = "^(Steam Settings|Friends List|.*- Chat)$" },
+	float = true,
+})
+
+-- Audio controls
+hl.window_rule({
+	name = "small-utility-apps",
+	match = { class = "^(pavucontrol|blueman-manager|nm-connection-editor)$" },
+	float = true,
+	center = true,
+	size = "40% 50%",
 })

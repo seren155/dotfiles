@@ -8,6 +8,7 @@ hl.env("hyprcursor_theme", cursor)
 hl.env("xcursor_theme", cursor)
 hl.env("xcursor_size", cur_size)
 hl.env("hyprcursor_size", cur_size)
+
 hl.on("hyprland.start", function()
 	hl.exec_cmd("hyprctl setcursor " .. cursor .. " " .. cur_size)
 	hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-theme " .. cursor)
@@ -34,6 +35,7 @@ hl.on("hyprland.start", function()
 			.. "' >> ~/.config/qt6ct/qt6ct.conf"
 	)
 end)
+
 -- Toolkit Backend Variables
 hl.env("GDK_BACKEND", "wayland,x11,*")
 hl.env("SDL_VIDEODRIVER", "wayland")

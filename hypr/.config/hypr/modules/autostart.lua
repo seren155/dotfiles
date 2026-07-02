@@ -14,10 +14,7 @@
 -- end)
 
 hl.on("hyprland.start", function()
-	hl.exec_cmd("systemctl --user enable --now waybar.service")
-	hl.exec_cmd("waypaper --restore")
+	hl.exec_cmd("qs -c noctalia-shell")
 	hl.exec_cmd("systemctl --user start hyprpolkitagent")
-	hl.exec_cmd("systemctl --user enable --now hypridle.service")
 	hl.exec_cmd("/usr/lib/pam_kwallet_init")
-	hl.exec_cmd("swayosd-server")
 end)
