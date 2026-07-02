@@ -25,6 +25,11 @@ h.bind("SUPER + ESCAPE", "wlogout")
 h.bind("SUPER + PERIOD", "rofi -modi emoji -show emoji -emoji-format '{emoji}'") ------------------
 h.bind("SUPER + SPACE", menu)
 h.bind("SUPER + E", fileManager)
+-- To switch between windows in a floating workspace:
+hl.bind("ALT + TAB", function()
+	hl.dispatch(hl.dsp.window.cycle_next()) -- Change focus to another window
+	hl.dispatch(hl.dsp.window.bring_to_top()) -- Bring it to the top
+end)
 hl.bind("PRINT", hl.dsp.exec_cmd("~/.local/bin/scripts/omarchy-capture-screenshot"))
 hl.bind(mainMod .. " + T", hl.dsp.layout("togglesplit")) -- dwindle only
 local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
