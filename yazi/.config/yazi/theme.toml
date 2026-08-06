@@ -184,3 +184,7 @@ rules = [
   # Fallback — warm gray
   { url = "*", fg = "#928374" },
 ]
+
+[flavor]
+dark  = "noctalia"
+light = "noctalia"
