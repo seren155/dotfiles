@@ -21,20 +21,16 @@
 | **Terminal** | [Kitty](https://sw.kovidgoyal.net/kitty/) | Fast, GPU-accelerated terminal emulator |
 | **Terminal Shell** | [Fish](https://fishshell.com/) | Smart, user-friendly interactive shell |
 | **Text Editor** | [Neovim (Nvim)](https://neovim.io/) | Extensible, Vim-based text editor |
-| **Shell** | [Noctalia](https://github.com/noctalia-dev/noctalia) | A sleek and minimal desktop shell thoughtfully crafted for Wayland. |
+| **Shell** | [Noctalia-shell](https://github.com/noctalia-dev/noctalia) | A sleek and minimal desktop shell thoughtfully crafted for Wayland. |
 | **App Launcher** | [Rofi](https://github.com/davatorium/rofi) | Window switcher and application launcher |
 | **File Manager** | [Yazi](https://github.com/sxyazi/yazi) + Thunar | Blazing fast terminal file manager (with GUI fallback) |
 | **Multimedia** | [mpv](https://mpv.io/) | Lightweight and powerful media player |
 | **Password Manager** | [KeePassXC](https://keepassxc.org/) | Secure, offline password manager |
 
----
-
 ## 📜 Scripts
 | Author | Source |
 | :--- | :--- |
 | Omarchy Screenshots | [omarchy-capture-screenshot](https://github.com/basecamp/omarchy/blob/dev/bin/omarchy-capture-screenshot) |
-
----
 
 ## 🎨 Color Scheme
 **[Gruvbox Retro Groove](https://github.com/morhetz/gruvbox)
