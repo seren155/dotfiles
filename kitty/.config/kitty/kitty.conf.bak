@@ -29,15 +29,16 @@ background_blue             1
 background_opacity          0.80
 
 # Subtle warm gruvbox border on active window
-# active_border_color         #d79921
-# inactive_border_color       #3c3836
-# bell_border_color           #cc241d
+active_border_color         #d79921
+inactive_border_color       #3c3836
+bell_border_color           #cc241d
 
 # =============================================================
 # CURSOR
 # =============================================================
-# cursor                  #d5c4a1
-# cursor_text_color       #1d2021
+
+cursor                  #d5c4a1
+cursor_text_color       #1d2021
 cursor_shape            block
 # cursor_blink_interval   0
 
@@ -63,7 +64,8 @@ copy_on_select          yes
 # =============================================================
 # URL DETECTION
 # =============================================================
-# url_color               #8ec07c
+
+url_color               #8ec07c
 url_style               curly
 # Opens URLs with your default xdg handler
 open_url_with           default
@@ -93,14 +95,14 @@ tab_title_template          " {index}: {title} "
 active_tab_title_template   " {index}: {title} "
 
 # Gruvbox tab bar colors
-# active_tab_foreground       #1d2021
-# active_tab_background       #d79921
+active_tab_foreground       #1d2021
+active_tab_background       #d79921
 active_tab_font_style       bold
-# inactive_tab_foreground     #928374
-# inactive_tab_background     #3c3836
+inactive_tab_foreground     #928374
+inactive_tab_background     #3c3836
 inactive_tab_font_style     normal
-# tab_bar_background          #1d2021
-# tab_bar_margin_color        #1d2021
+tab_bar_background          #1d2021
+tab_bar_margin_color        #1d2021
 
 # =============================================================
 # GRUVBOX COLOR SCHEME
@@ -108,44 +110,44 @@ inactive_tab_font_style     normal
 # =============================================================
 
 # Background & foreground
-# background              #1d2021
-# foreground              #d5c4a1
+background              #1d2021
+foreground              #d5c4a1
 
 # Selection — low contrast, no harsh invert
-# selection_background    #504945
-# selection_foreground    #d5c4a1
+selection_background    #504945
+selection_foreground    #d5c4a1
 
 # Black
-# color0                  #1d2021
-# color8                  #665c54
+color0                  #1d2021
+color8                  #665c54
 
 # Red (muted brick, not alarming)
-# color1                  #cc241d
-# color9                  #9d0006
+color1                  #cc241d
+color9                  #9d0006
 
 # Green
-# color2                  #98971a
-# color10                 #79740e
+color2                  #98971a
+color10                 #79740e
 
 # Yellow / Amber
-# color3                  #d79921
-# color11                 #b57614
+color3                  #d79921
+color11                 #b57614
 
 # Blue (steel, not electric)
-# color4                  #458588
-# color12                 #076678
+color4                  #458588
+color12                 #076678
 
 # Magenta (dusty mauve)
-# color5                  #b16286
-# color13                 #8f3f71
+color5                  #b16286
+color13                 #8f3f71
 
 # Cyan / Aqua
-# color6                  #689d6a
-# color14                 #427b58
+color6                  #689d6a
+color14                 #427b58
 
 # White (warm gray, not stark)
-# color7                  #a89984
-# color15                 #928374
+color7                  #a89984
+color15                 #928374
 
 # =============================================================
 # KEYBOARD SHORTCUTS
@@ -182,6 +184,3 @@ map ctrl+shift+u        open_url_with_hints
 repaint_delay       10
 input_delay         3
 sync_to_monitor     yes
-
-
-include themes/noctalia.conf
