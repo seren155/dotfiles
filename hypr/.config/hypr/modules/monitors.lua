@@ -8,7 +8,7 @@ hl.monitor({
 	mode = "1920x1080@120",
 	position = "0x0",
 	scale = "1",
+	bitdepth = 8,
 })
 
 hl.monitor({ output = "", mode = "preferred", position = "auto", scale = "1" })
-

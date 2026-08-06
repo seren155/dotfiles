@@ -4,10 +4,10 @@
 local cursor = "Bibata-Modern-Ice"
 local cur_size = "28"
 -- see https://wiki.hypr.land/configuring/advanced-and-cool/environment-variables/
-hl.env("hyprcursor_theme", cursor)
-hl.env("xcursor_theme", cursor)
-hl.env("xcursor_size", cur_size)
-hl.env("hyprcursor_size", cur_size)
+hl.env("HYPRCURSOR_THEME", cursor)
+hl.env("XCURSOR_THEME", cursor)
+hl.env("XCURSOR_SIZE", cur_size)
+hl.env("HYPRCURSOR_SIZE", cur_size)
 
 hl.on("hyprland.start", function()
 	hl.exec_cmd("hyprctl setcursor " .. cursor .. " " .. cur_size)
@@ -52,4 +52,3 @@ hl.env("QT_AUTO_SCREEN_SCALE_FACTOR", "1")
 hl.env("QT_QPA_PLATFORM", "wayland;xcb")
 hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
-hl.env("QT_QPA_PLATFORMTHEME", "qt5ct")
