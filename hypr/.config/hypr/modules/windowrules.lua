@@ -71,35 +71,38 @@ hl.window_rule({
 -- Float and center dialogs/pickers
 hl.window_rule({
 	name = "float-dialogs",
-	match = { title = "^(Open File|Save As|Library|Picture-in-Picture|About)$" },
+	match = { title = "^(Open File|Save As|Select a File|Open Folder|File Upload)(.*)$" },
 	float = true,
 	center = true,
-})
-
--- Picture-in-Picture
-hl.window_rule({
-	name = "pip-corner",
-	match = { title = "^(Picture-in-Picture)$" },
-	float = true,
-	pin = true,
-	move = "100%-w-20 100%-h-20",
-	size = "25% 25%",
 })
 
 -- Steam
 hl.window_rule({
 	name = "steam-dialogs",
-	match = { class = "^(steam)$", title = "^(Steam Settings|Friends List|.*- Chat)$" },
+	match = { class = "^(steam)$", title = "^(Steam Settings|Friends List|.* - Chat)$" },
 	float = true,
+})
+
+hl.window_rule({
+	name = "picture-in-picture",
+	match = { title = "^([Pp]icture[%-%s]?[Ii]n[%-%s]?[Pp]icture)(.*)$" },
+	float = true,
+	pin = true,
+	-- Adjust these coordinates to your preference
+	move = "75% 75%",
+	size = "25% 25%",
+	keep_aspect_ratio = true,
 })
 
 -- Audio controls
 hl.window_rule({
 	name = "small-utility-apps",
-	match = { class = "^(pavucontrol|blueman-manager|nm-connection-editor)$" },
+	match = {
+		class = "^(com-abdownloadmanager-desktop-AppKt|org.pulseaudio.pavucontrol|blueman-manager|nm-connection-editor)$",
+	},
 	float = true,
 	center = true,
-	size = "40% 50%",
+	size = "800 600",
 })
 
 hl.layer_rule({
