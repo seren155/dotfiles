@@ -15,6 +15,15 @@ local function set_cursor_theme(theme, size)
 		hl.exec_cmd("hyprctl setcursor " .. theme .. " " .. size)
 		hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-theme " .. theme)
 		hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-size " .. size)
+		-- GTK3
+		hl.exec_cmd("mkdir -p ~/.config/gtk-3.0")
+		hl.exec_cmd(
+			[[printf '%b' '[Settings]\ngtk-cursor-theme-name=]]
+				.. theme
+				.. [[\ngtk-cursor-theme-size=]]
+				.. size
+				.. [[' > ~/.config/gtk-3.0/settings.ini]]
+		)
 		-- GTK4
 		hl.exec_cmd("mkdir -p ~/.config/gtk-4.0")
 		hl.exec_cmd(
@@ -36,22 +45,29 @@ local function set_cursor_theme(theme, size)
 				.. theme
 				.. "' >> ~/.config/qt6ct/qt6ct.conf"
 		)
+		-- Qt5
+		hl.exec_cmd("mkdir -p ~/.config/qt5ct")
+		hl.exec_cmd(
+			"grep -q '^cursor_theme=' ~/.config/qt5ct/qt5ct.conf && sed -i 's/^cursor_theme=.*/cursor_theme="
+				.. theme
+				.. "/' ~/.config/qt5ct/qt5ct.conf || echo 'cursor_theme="
+				.. theme
+				.. "' >> ~/.config/qt5ct/qt5ct.conf"
+		)
+
+		-- Xresources
+		-- hl.exec_cmd("sed -i '/^Xcursor\\./d' ~/.Xresources 2>/dev/null || true")
+		-- hl.exec_cmd("echo 'Xcursor.theme: " .. theme .. "' >> ~/.Xresources")
+		-- hl.exec_cmd("echo 'Xcursor.size: " .. size .. "' >> ~/.Xresources")
+		-- hl.exec_cmd("xrdb -merge ~/.Xresources 2>/dev/null || true")
+
+		-- Flatpak
+		hl.exec_cmd("flatpak override --user --env=XCURSOR_THEME=" .. theme .. " 2>/dev/null || true")
+		hl.exec_cmd("flatpak override --user --env=XCURSOR_SIZE=" .. size .. " 2>/dev/null || true")
+
+		-- Some apps need this
+		hl.exec_cmd("xsetroot -cursor_name left_ptr 2>/dev/null || true")
 	end)
-	-- Qt5
-	hl.exec_cmd("mkdir -p ~/.config/qt5ct")
-	-- [same grep/sed as qt6 but for qt5ct.conf]
-
-	-- Xresources
-	hl.exec_cmd("sed -i '/^Xcursor\\./d' ~/.Xresources 2>/dev/null || true")
-	hl.exec_cmd("echo 'Xcursor.theme: " .. theme .. "' >> ~/.Xresources")
-	hl.exec_cmd("echo 'Xcursor.size: " .. size .. "' >> ~/.Xresources")
-
-	-- Flatpak
-	hl.exec_cmd("flatpak override --user --env=XCURSOR_THEME=" .. theme .. " 2>/dev/null || true")
-	hl.exec_cmd("flatpak override --user --env=XCURSOR_SIZE=" .. size .. " 2>/dev/null || true")
-
-	-- Some apps need this
-	hl.exec_cmd("xsetroot -cursor_name left_ptr 2>/dev/null || true")
 end
 
 -- Toolkit Backend Variables
