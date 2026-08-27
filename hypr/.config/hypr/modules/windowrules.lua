@@ -75,6 +75,11 @@ hl.window_rule({
 	float = true,
 	center = true,
 })
+hl.window_rule({
+	match = { class = "XIVLauncher.Core" },
+	float = true,
+	center = true,
+})
 
 -- Steam
 hl.window_rule({
