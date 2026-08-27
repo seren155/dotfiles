@@ -61,6 +61,10 @@ hl.window_rule({
 		class = "^(.*)$",
 	},
 	idle_inhibit = "fullscreen",
+})
+
+hl.window_rule({
+	match = { class = "^(.*)$", fullscreen = true },
 	immediate = true,
 	no_shadow = true,
 	no_blur = true,
