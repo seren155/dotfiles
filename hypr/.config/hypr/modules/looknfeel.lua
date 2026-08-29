@@ -61,11 +61,11 @@ hl.curve("fadeCurve", { type = "bezier", points = { { 0.35, 0 }, { 0.1, 1 } } })
 
 -- ANIMATIONS
 hl.animation({ leaf = "global", enabled = true, speed = 12, bezier = "default" })
-hl.animation({ leaf = "border", enabled = true, speed = 6, spring = "snappy" })
+hl.animation({ leaf = "border", enabled = true, speed = 7, spring = "snappy" })
 
-hl.animation({ leaf = "windows", enabled = true, speed = 4, spring = "snappier" })
-hl.animation({ leaf = "windowsIn", enabled = true, speed = 3.5, spring = "snappier", style = "popin" })
-hl.animation({ leaf = "windowsOut", enabled = true, speed = 2.5, spring = "snappier", style = "slide" })
+hl.animation({ leaf = "windows", enabled = true, speed = 5, spring = "snappier" })
+hl.animation({ leaf = "windowsIn", enabled = true, speed = 4.5, spring = "snappier", style = "popin" })
+hl.animation({ leaf = "windowsOut", enabled = true, speed = 3.5, spring = "snappier", style = "slide" })
 
 hl.animation({ leaf = "layers", enabled = true, speed = 3.5, spring = "snappy" })
 hl.animation({ leaf = "layersIn", enabled = true, speed = 3, spring = "snappy", style = "slide" })
