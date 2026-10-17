@@ -7,6 +7,32 @@
 
 -- Example window rules that are useful
 
+-- Noctalia --
+hl.workspace_rule({ workspace = "1", monitor = "HDMI-A-1", persistent = true, default_name = "web" })
+hl.workspace_rule({ workspace = "2", monitor = "HDMI-A-1", persistent = true, default_name = "code" })
+hl.workspace_rule({ workspace = "3", monitor = "HDMI-A-1", persistent = true, default_name = "chat" })
+hl.workspace_rule({ workspace = "4", monitor = "HDMI-A-1", persistent = true, default_name = "game" })
+hl.workspace_rule({ workspace = "5", monitor = "HDMI-A-1", persistent = true, default_name = "design" })
+
+hl.layer_rule({
+	name = "noctalia",
+	match = {
+		namespace = "^noctalia-(bar-.+|notification|dock|panel|attached-panel|osd|window-switcher)$",
+	},
+	no_anim = true,
+	ignore_alpha = 0.5,
+	blur = true,
+	blur_popups = true,
+})
+
+-- Noctalia Settings
+hl.window_rule({
+	match = { class = "dev.noctalia.Noctalia" },
+	float = true,
+	size = { 1080, 920 },
+})
+-- Noctalia --
+
 local suppressMaximizeRule = hl.window_rule({
 	-- Ignore maximize requests from all apps. You'll probably like this.
 	name = "suppress-maximize-events",
