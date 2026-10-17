@@ -27,10 +27,11 @@
 | **Multimedia** | [mpv](https://mpv.io/) | Lightweight and powerful media player |
 | **Password Manager** | [KeePassXC](https://keepassxc.org/) | Secure, offline password manager |
 
-## 📜 Scripts
+## 📜 Scripts & Misc
 | Author | Source |
 | :--- | :--- |
 | Omarchy Screenshots | [omarchy-capture-screenshot](https://github.com/basecamp/omarchy/blob/dev/bin/omarchy-capture-screenshot) |
+| evdev-keepalive | [Keep 8bitdo/generic controllers alive](https://github.com/pastaq/evdev-keepalive) |
 
 ## 🎨 Color Scheme
 **[Gruvbox Retro Groove](https://github.com/morhetz/gruvbox)
